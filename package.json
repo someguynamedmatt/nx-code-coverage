@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dkhunt27/nx-code-coverage.git"
+    "url": "git+https://github.com/someguynamedmatt/nx-code-coverage.git"
   },
   "keywords": [
     "actions",

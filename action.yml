@@ -1,21 +1,21 @@
 name: 'NX Code Coverage'
 description: 'Github action for combining/compiling code coverage from an nx monorepo'
-author: 'dkhunt27'
+author: 'someguynamedmatt'
 branding:
   icon: box
   color: blue
 inputs:
-  github-token: 
+  github-token:
     required: true
     description: Github token
-  no-coverage-ran: 
+  no-coverage-ran:
     required: true
     description: true/false if no coverage was ran; useful if using nx affected and it returned no projects
     type: boolean
-  coverage-folder: 
+  coverage-folder:
     required: false
     description: path to folder containing project folders with coverage data (default 'coverage')
-  coverage-base-folder: 
+  coverage-base-folder:
     required: false
     description: path to folder containing project folders with coverage data for diff/base comparison (default 'coverage-base')
   gist-processing:

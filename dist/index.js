@@ -708,11 +708,13 @@ const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList })
             // use Number.EPSILON so rounding of 0.0005 is correct
             diff =
                 Math.round((summaryCoveragePct - baseCoveragePct + Number.EPSILON) * 100) / 100;
+            (0, core_1.info)(`DIFF ${diff}`);
         }
         else {
             // if not in base, assuming it is all new coverage so set base to 0
             baseCoveragePct = 0;
             diff = summaryCoveragePct;
+            (0, core_1.info)(`DIFF ${diff}`);
         }
         // if in base but not in current, then assuming code didn't change so no need to output
         mergedList.push({

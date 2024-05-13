@@ -66,6 +66,9 @@ inputs:
     description: true/false to hide the coverage results that have no diffs
     type: boolean
     required: true
+outputs:
+  decreased-coverage:
+    description: 'Did the coverage decrease in this test run? (boolean)'
 runs:
   using: 'node20'
   main: 'dist/index.js'

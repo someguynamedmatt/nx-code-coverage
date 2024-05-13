@@ -15,7 +15,8 @@ import {
 import {
   debug as logDebug,
   info as logInfo,
-  warning as logWarn
+  warning as logWarn,
+  setOutput
 } from '@actions/core'
 import {readFileSync, readdirSync, statSync} from 'fs'
 import {TextReport} from './istanbul-reports-text'

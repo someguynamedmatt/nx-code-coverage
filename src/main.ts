@@ -3,7 +3,8 @@ import {buildParsedContext, upsertComment} from './github'
 import {
   debug as logDebug,
   info as logInfo,
-  warning as logWarn
+  warning as logWarn,
+  setOutput
 } from '@actions/core'
 import {JcsMergedType} from './types'
 import {MainInputs} from './interfaces'
@@ -94,6 +95,12 @@ export const main = async ({
       }
     }
 
+    results.forEach(result => {
+      if (result?.diff !== null && result.diff < 0) {
+        logInfo('Diff is negative, setting output as true')
+        setOutput('decreased-coverage', true)
+      }
+    })
     return results
   } catch (error) {
     throw error

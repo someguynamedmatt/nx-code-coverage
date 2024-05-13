@@ -12,7 +12,11 @@ import {
   JcsParsedType,
   SummaryFileListType
 } from './types'
-import {debug as logDebug, warning as logWarn} from '@actions/core'
+import {
+  debug as logDebug,
+  info as logInfo,
+  warning as logWarn
+} from '@actions/core'
 import {readFileSync, readdirSync, statSync} from 'fs'
 import {TextReport} from './istanbul-reports-text'
 import libCoverage from 'istanbul-lib-coverage'
@@ -84,12 +88,12 @@ export const mergeFileLists = ({
         Math.round(
           (summaryCoveragePct - baseCoveragePct + Number.EPSILON) * 100
         ) / 100
-      console.log('DIFF', diff)
+      logInfo(`DIFF ${diff}`)
     } else {
       // if not in base, assuming it is all new coverage so set base to 0
       baseCoveragePct = 0
       diff = summaryCoveragePct
-      console.log('DIFF', diff)
+      logInfo(`DIFF ${diff}`)
     }
 
     // if in base but not in current, then assuming code didn't change so no need to output

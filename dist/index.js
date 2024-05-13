@@ -959,6 +959,12 @@ const main = (_a) => __awaiter(void 0, [_a], void 0, function* ({ coverageRan, c
                 (0, badges_1.updateCoverageGist)({ files, gistToken, gistId });
             }
         }
+        for (const result of results) {
+            if ((result === null || result === void 0 ? void 0 : result.diff) !== null && result.diff < 0) {
+                (0, core_1.info)('Diff is negative, setting output as true');
+                (0, core_1.setOutput)('decreased-coverage', true);
+            }
+        }
         return results;
     }
     catch (error) {

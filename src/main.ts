@@ -95,7 +95,7 @@ export const main = async ({
       }
     }
 
-    for (let result of results) {
+    for (const result of results) {
       if (result?.diff !== null && result.diff < 0) {
         logInfo('Diff is negative, setting output as true')
         setOutput('decreased-coverage', true)

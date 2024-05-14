@@ -17,6 +17,7 @@ export const buildComment = ({
     let plus = ''
     let arrow = ''
     let diffHtml = ''
+    const app = Boolean(result.app) ? result.app : '/'
 
     // when no tests, not sure if output is undefined or 'Unknown'; TODO: add test case
     if (
@@ -59,12 +60,12 @@ export const buildComment = ({
     } else {
       if (hideCoverageReports) {
         return `${table(
-          tbody(tr(th(result.app), th(coverage, '%'), diffHtml))
+          tbody(tr(th(app), th(coverage, '%'), diffHtml))
         )} <br/>`
       } else {
         const htmlResults = tabulate(result.details)
         return `${table(
-          tbody(tr(th(result.app), th(coverage, '%'), diffHtml))
+          tbody(tr(th(app), th(coverage, '%'), diffHtml))
         )} \n\n ${details(summary('Coverage Report'), htmlResults)} <br/>`
       }
     }

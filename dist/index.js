@@ -137,7 +137,7 @@ const buildComment = ({ results, hideCoverageReports, hideUnchanged }) => {
         let plus = '';
         let arrow = '';
         let diffHtml = '';
-        const app = result.app ? result.app : '/';
+        const app = result.app ? result.app : 'overall';
         // when no tests, not sure if output is undefined or 'Unknown'; TODO: add test case
         if (result.diff !== undefined &&
             result.diff !== null &&

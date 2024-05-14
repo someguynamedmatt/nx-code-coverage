@@ -137,6 +137,7 @@ const buildComment = ({ results, hideCoverageReports, hideUnchanged }) => {
         let plus = '';
         let arrow = '';
         let diffHtml = '';
+        const app = result.app ? result.app : '/';
         // when no tests, not sure if output is undefined or 'Unknown'; TODO: add test case
         if (result.diff !== undefined &&
             result.diff !== null &&
@@ -165,11 +166,11 @@ const buildComment = ({ results, hideCoverageReports, hideUnchanged }) => {
         }
         else {
             if (hideCoverageReports) {
-                return `${(0, html_1.table)((0, html_1.tbody)((0, html_1.tr)((0, html_1.th)(result.app), (0, html_1.th)(coverage, '%'), diffHtml)))} <br/>`;
+                return `${(0, html_1.table)((0, html_1.tbody)((0, html_1.tr)((0, html_1.th)(app), (0, html_1.th)(coverage, '%'), diffHtml)))} <br/>`;
             }
             else {
                 const htmlResults = (0, tabulate_1.tabulate)(result.details);
-                return `${(0, html_1.table)((0, html_1.tbody)((0, html_1.tr)((0, html_1.th)(result.app), (0, html_1.th)(coverage, '%'), diffHtml)))} \n\n ${(0, html_1.details)((0, html_1.summary)('Coverage Report'), htmlResults)} <br/>`;
+                return `${(0, html_1.table)((0, html_1.tbody)((0, html_1.tr)((0, html_1.th)(app), (0, html_1.th)(coverage, '%'), diffHtml)))} \n\n ${(0, html_1.details)((0, html_1.summary)('Coverage Report'), htmlResults)} <br/>`;
             }
         }
     });

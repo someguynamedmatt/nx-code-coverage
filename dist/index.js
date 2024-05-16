@@ -688,7 +688,7 @@ const processCoverageFiles = (_a) => __awaiter(void 0, [_a], void 0, function* (
 exports.processCoverageFiles = processCoverageFiles;
 const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList }) => {
     const mergedList = [];
-    for (const jsonSum of summaryFileList) {
+    for (const [index, jsonSum] of summaryFileList.entries()) {
         let base = null;
         let baseCoveragePct = null;
         let diff = null;
@@ -722,7 +722,7 @@ const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList })
             app: summary.app,
             coverage: summaryCoveragePct,
             base: baseCoveragePct,
-            diff,
+            diff: index === 0 && summaryFileList.length < 2 ? 0 : diff,
             details: finalParsed
         });
     }

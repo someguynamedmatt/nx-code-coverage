@@ -58,6 +58,7 @@ export const mergeFileLists = ({
   finalFileList
 }: MergeFileListsInputs): JcsMergedType[] => {
   const mergedList: JcsMergedType[] = []
+  logInfo(`${summaryFileList};;;;;;${finalFileList}`)
   for (const [index, jsonSum] of summaryFileList.entries()) {
     let base: JcsMergedItemType | null = null
     let baseCoveragePct: number | null = null

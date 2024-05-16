@@ -58,7 +58,7 @@ export const mergeFileLists = ({
   finalFileList
 }: MergeFileListsInputs): JcsMergedType[] => {
   const mergedList: JcsMergedType[] = []
-  for (const jsonSum of summaryFileList) {
+  for (const [index, jsonSum] of summaryFileList.entries()) {
     let base: JcsMergedItemType | null = null
     let baseCoveragePct: number | null = null
     let diff: number | null = null
@@ -102,7 +102,7 @@ export const mergeFileLists = ({
       app: summary.app,
       coverage: summaryCoveragePct,
       base: baseCoveragePct,
-      diff,
+      diff: index === 0 && summaryFileList.length < 2 ? 0 : diff,
       details: finalParsed
     })
   }

@@ -72,5 +72,9 @@ export const buildComment = ({
   })
 
   const title = `Code Coverage:<p></p>`
-  return fragment(title, table(tbody(html.join(''))))
+  return fragment(
+    title,
+    table(tbody(tr(th('App'), th('Coverage'), th('Diff')))),
+    table(tbody(html.join('')))
+  )
 }

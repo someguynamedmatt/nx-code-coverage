@@ -68,7 +68,7 @@ export const mergeFileLists = ({
     let diff: number | null = null
 
     const summary = buildMergeItem(jsonSum)
-    logInfo(`SUMMARY parsedTotal: ${summary.parsedTotal}`)
+    logInfo(`SUMMARY parsedTotal: ${JSON.stringify(summary.parsedTotal)}`)
     const summaryCoveragePct =
       summary.parsedTotal.statements.pct.toString() === 'Unknown'
         ? 0
@@ -86,7 +86,7 @@ export const mergeFileLists = ({
     if (found) {
       base = buildMergeItem(found)
       baseCoveragePct = base.parsedTotal.statements.pct
-      logInfo(`BASE parsedTotal: ${summary.parsedTotal}`)
+      logInfo(`BASE parsedTotal: ${JSON.stringify(summary.parsedTotal)}`)
       // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON
       // use Number.EPSILON so rounding of 0.0005 is correct
       diff =

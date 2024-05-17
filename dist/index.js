@@ -687,7 +687,6 @@ const processCoverageFiles = (_a) => __awaiter(void 0, [_a], void 0, function* (
 exports.processCoverageFiles = processCoverageFiles;
 const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList }) => {
     const mergedList = [];
-    (0, core_1.info)(`${JSON.stringify(summaryFileList)};;;;;;${JSON.stringify(finalFileList)}`);
     // for (const [index, jsonSum] of summaryFileList.entries()) {
     for (const jsonSum of summaryFileList) {
         let base = null;
@@ -707,7 +706,7 @@ const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList })
         if (found) {
             base = (0, exports.buildMergeItem)(found);
             baseCoveragePct = base.parsedTotal.statements.pct;
-            (0, core_1.info)(`BASE parsedTotal: ${JSON.stringify(summary.parsedTotal)}`);
+            (0, core_1.info)(`BASE parsedTotal: ${JSON.stringify(base.parsedTotal)}`);
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON
             // use Number.EPSILON so rounding of 0.0005 is correct
             diff =
@@ -721,7 +720,6 @@ const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList })
             (0, core_1.info)(`DIFF ${diff}`);
         }
         // if in base but not in current, then assuming code didn't change so no need to output
-        (0, core_1.info)(`SUMMARY FILE LIST ${JSON.stringify(summaryFileList)}`);
         mergedList.push({
             app: summary.app,
             coverage: summaryCoveragePct,

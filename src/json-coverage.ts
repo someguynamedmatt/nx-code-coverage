@@ -58,9 +58,6 @@ export const mergeFileLists = ({
   finalFileList
 }: MergeFileListsInputs): JcsMergedType[] => {
   const mergedList: JcsMergedType[] = []
-  logInfo(
-    `${JSON.stringify(summaryFileList)};;;;;;${JSON.stringify(finalFileList)}`
-  )
   // for (const [index, jsonSum] of summaryFileList.entries()) {
   for (const jsonSum of summaryFileList) {
     let base: JcsMergedItemType | null = null
@@ -86,7 +83,7 @@ export const mergeFileLists = ({
     if (found) {
       base = buildMergeItem(found)
       baseCoveragePct = base.parsedTotal.statements.pct
-      logInfo(`BASE parsedTotal: ${JSON.stringify(summary.parsedTotal)}`)
+      logInfo(`BASE parsedTotal: ${JSON.stringify(base.parsedTotal)}`)
       // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON
       // use Number.EPSILON so rounding of 0.0005 is correct
       diff =
@@ -103,7 +100,6 @@ export const mergeFileLists = ({
 
     // if in base but not in current, then assuming code didn't change so no need to output
 
-    logInfo(`SUMMARY FILE LIST ${JSON.stringify(summaryFileList)}`)
     mergedList.push({
       app: summary.app,
       coverage: summaryCoveragePct,

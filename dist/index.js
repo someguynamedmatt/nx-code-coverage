@@ -175,7 +175,7 @@ const buildComment = ({ results, hideCoverageReports, hideUnchanged }) => {
         }
     });
     const title = `Code Coverage:<p></p>`;
-    return (0, html_1.fragment)(title, (0, html_1.table)((0, html_1.tbody)((0, html_1.tr)((0, html_1.th)('App'), (0, html_1.th)('Coverage'), (0, html_1.th)('Diff')))), (0, html_1.table)((0, html_1.tbody)(html.join(''))));
+    return (0, html_1.fragment)(title, (0, html_1.table)((0, html_1.tbody)((0, html_1.tr)((0, html_1.th)('App'), (0, html_1.th)('Coverage'), (0, html_1.th)('Diff')), html.join(''))));
 };
 exports.buildComment = buildComment;
 

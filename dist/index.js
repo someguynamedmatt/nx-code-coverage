@@ -166,11 +166,11 @@ const buildComment = ({ results, hideCoverageReports, hideUnchanged }) => {
         }
         else {
             if (hideCoverageReports) {
-                return `${(0, html_1.tr)((0, html_1.th)(app), (0, html_1.th)(coverage, '%'), diffHtml)} <br/>`;
+                return `${(0, html_1.tr)((0, html_1.th)(app), (0, html_1.th)(coverage, '%'), diffHtml)}`;
             }
             else {
                 const htmlResults = (0, tabulate_1.tabulate)(result.details);
-                return `${(0, html_1.tr)((0, html_1.th)(app), (0, html_1.th)(coverage, '%'), diffHtml)} \n\n ${(0, html_1.details)((0, html_1.summary)('Coverage Report'), htmlResults)} <br/>`;
+                return `${(0, html_1.tr)((0, html_1.th)(app), (0, html_1.th)(coverage, '%'), diffHtml)} \n\n ${(0, html_1.details)((0, html_1.summary)('Coverage Report'), htmlResults)}`;
             }
         }
     });

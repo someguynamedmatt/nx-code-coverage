@@ -59,14 +59,14 @@ export const buildComment = ({
       return ''
     } else {
       if (hideCoverageReports) {
-        return `${tr(th(app), th(coverage, '%'), diffHtml)} <br/>`
+        return `${tr(th(app), th(coverage, '%'), diffHtml)}`
       } else {
         const htmlResults = tabulate(result.details)
         return `${tr(
           th(app),
           th(coverage, '%'),
           diffHtml
-        )} \n\n ${details(summary('Coverage Report'), htmlResults)} <br/>`
+        )} \n\n ${details(summary('Coverage Report'), htmlResults)}`
       }
     }
   })

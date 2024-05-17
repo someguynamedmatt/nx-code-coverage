@@ -1,5 +1,5 @@
 import {context, getOctokit} from '@actions/github'
-import {debug as logDebug} from '@actions/core'
+import {info as logInfo, debug as logDebug} from '@actions/core'
 import {ParsedContextType} from './types'
 import {UpsertCommentInputs} from './interfaces'
 
@@ -35,6 +35,8 @@ export const buildParsedContext = (): ParsedContextType => {
     repoOwner: context.repo.owner,
     repoRepo: context.repo.repo
   }
+
+  logInfo(`LOG INFO: ${JSON.stringify(parsedContext)}`)
 
   return parsedContext
 }

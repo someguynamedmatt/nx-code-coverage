@@ -226,6 +226,7 @@ const buildParsedContext = () => {
         repoOwner: github_1.context.repo.owner,
         repoRepo: github_1.context.repo.repo
     };
+    (0, core_1.info)(`LOG INFO: ${JSON.stringify(parsedContext)}`);
     return parsedContext;
 };
 exports.buildParsedContext = buildParsedContext;

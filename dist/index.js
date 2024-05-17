@@ -688,7 +688,8 @@ exports.processCoverageFiles = processCoverageFiles;
 const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList }) => {
     const mergedList = [];
     (0, core_1.info)(`${JSON.stringify(summaryFileList)};;;;;;${JSON.stringify(finalFileList)}`);
-    for (const [index, jsonSum] of summaryFileList.entries()) {
+    // for (const [index, jsonSum] of summaryFileList.entries()) {
+    for (const jsonSum of summaryFileList) {
         let base = null;
         let baseCoveragePct = null;
         let diff = null;
@@ -723,7 +724,8 @@ const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList })
             app: summary.app,
             coverage: summaryCoveragePct,
             base: baseCoveragePct,
-            diff: index === 0 && summaryFileList.length < 2 ? 0 : diff,
+            // diff: index === 0 && summaryFileList.length < 2 ? 0 : diff,
+            diff,
             details: finalParsed
         });
     }

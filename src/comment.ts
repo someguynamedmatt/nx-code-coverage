@@ -59,16 +59,18 @@ export const buildComment = ({
       return ''
     } else {
       if (hideCoverageReports) {
-        return `${table(tbody(tr(th(app), th(coverage, '%'), diffHtml)))} <br/>`
+        return `${tr(th(app), th(coverage, '%'), diffHtml)} <br/>`
       } else {
         const htmlResults = tabulate(result.details)
-        return `${table(
-          tbody(tr(th(app), th(coverage, '%'), diffHtml))
+        return `${tr(
+          th(app),
+          th(coverage, '%'),
+          diffHtml
         )} \n\n ${details(summary('Coverage Report'), htmlResults)} <br/>`
       }
     }
   })
 
   const title = `Code Coverage:<p></p>`
-  return fragment(title, html.join(''))
+  return fragment(title, table(tbody(html.join(''))))
 }

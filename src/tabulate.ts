@@ -15,6 +15,7 @@ export const tabulate = (results: string): string => {
   for (const piece of innerParts) {
     cols.push(th(piece))
   }
+  rows.push(tr(th('App'), th('Coverage'), th('Diff')))
   rows.push(tr(cols.join('')))
   parts.shift()
 

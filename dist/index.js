@@ -996,6 +996,7 @@ const tabulate = (results) => {
     for (const piece of innerParts) {
         cols.push((0, html_1.th)(piece));
     }
+    rows.push((0, html_1.tr)((0, html_1.th)('App'), (0, html_1.th)('Coverage'), (0, html_1.th)('Diff')));
     rows.push((0, html_1.tr)(cols.join('')));
     parts.shift();
     // parse other rows

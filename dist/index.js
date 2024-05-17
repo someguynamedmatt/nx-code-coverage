@@ -719,7 +719,7 @@ const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList })
             (0, core_1.info)(`DIFF ${diff}`);
         }
         // if in base but not in current, then assuming code didn't change so no need to output
-        (0, core_1.info)(`SUMMARY FILE LIST ${summaryFileList}`);
+        (0, core_1.info)(`SUMMARY FILE LIST ${JSON.stringify(summaryFileList)}`);
         mergedList.push({
             app: summary.app,
             coverage: summaryCoveragePct,

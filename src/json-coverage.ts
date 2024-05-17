@@ -101,6 +101,7 @@ export const mergeFileLists = ({
 
     // if in base but not in current, then assuming code didn't change so no need to output
 
+    logInfo(`SUMMARY FILE LIST ${summaryFileList}`)
     mergedList.push({
       app: summary.app,
       coverage: summaryCoveragePct,

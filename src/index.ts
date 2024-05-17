@@ -2,7 +2,6 @@ import {
   getBooleanInput,
   getInput,
   error as logError,
-  info as logInfo,
   setFailed
 } from '@actions/core'
 import {MainInputs} from './interfaces'
@@ -19,7 +18,6 @@ async function run(): Promise<void> {
       getInput('coverage-base-folder') || 'coverage-base'
 
     const githubWorkspace = process.env.GITHUB_WORKSPACE
-    logInfo(`githubWorkspace:  ${githubWorkspace}`)
 
     if (!githubWorkspace) {
       throw new Error('process.env.GITHUB_WORKSPACE cannot be empty')

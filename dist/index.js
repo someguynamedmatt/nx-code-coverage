@@ -226,7 +226,6 @@ const buildParsedContext = () => {
         repoOwner: github_1.context.repo.owner,
         repoRepo: github_1.context.repo.repo
     };
-    (0, core_1.info)(`parsedContext: ${JSON.stringify(parsedContext, null, 2)}`);
     return parsedContext;
 };
 exports.buildParsedContext = buildParsedContext;
@@ -336,7 +335,6 @@ function run() {
             const coverageFolder = (0, core_1.getInput)('coverage-folder') || 'coverage';
             const coverageBaseFolder = (0, core_1.getInput)('coverage-base-folder') || 'coverage-base';
             const githubWorkspace = process.env.GITHUB_WORKSPACE;
-            (0, core_1.info)(`githubWorkspace:  ${githubWorkspace}`);
             if (!githubWorkspace) {
                 throw new Error('process.env.GITHUB_WORKSPACE cannot be empty');
             }
@@ -919,7 +917,6 @@ const main = (_a) => __awaiter(void 0, [_a], void 0, function* ({ coverageRan, c
         // check for coverage dir
         const coverageDirExists = (0, fs_1.existsSync)(coverageFolder);
         if (coverageRan && coverageDirExists) {
-            (0, core_1.info)(`Coverage Ran: processing coverage files`);
             results = yield (0, json_coverage_1.processCoverageFiles)({
                 workspacePath: githubWorkspace,
                 coverageFolder,
@@ -937,7 +934,6 @@ const main = (_a) => __awaiter(void 0, [_a], void 0, function* ({ coverageRan, c
             commentBody = 'No coverage ran';
             hiddenHeader = hiddenHeaderNoCoverage;
         }
-        (0, core_1.debug)(`commentBody: ${commentBody}`);
         const parsedContext = (0, github_1.buildParsedContext)();
         if (parsedContext.pullRequestNumber !== -1) {
             (0, core_1.info)(`PR Detected: Updating the PR Comment with Code Coverage`);

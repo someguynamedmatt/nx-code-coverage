@@ -1,11 +1,6 @@
 import {buildGistCoverageFileList, updateCoverageGist} from './badges'
 import {buildParsedContext, upsertComment} from './github'
-import {
-  debug as logDebug,
-  info as logInfo,
-  warning as logWarn,
-  setOutput
-} from '@actions/core'
+import {info as logInfo, warning as logWarn, setOutput} from '@actions/core'
 import {JcsMergedType} from './types'
 import {MainInputs} from './interfaces'
 import {omit as _omit} from 'lodash'
@@ -37,7 +32,6 @@ export const main = async ({
     const coverageDirExists = existsSync(coverageFolder)
 
     if (coverageRan && coverageDirExists) {
-      logInfo(`Coverage Ran: processing coverage files`)
       results = await processCoverageFiles({
         workspacePath: githubWorkspace,
         coverageFolder,
@@ -63,8 +57,6 @@ export const main = async ({
       commentBody = 'No coverage ran'
       hiddenHeader = hiddenHeaderNoCoverage
     }
-
-    logDebug(`commentBody: ${commentBody}`)
 
     const parsedContext = buildParsedContext()
 

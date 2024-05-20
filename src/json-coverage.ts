@@ -81,8 +81,10 @@ export const mergeFileLists = ({
     }
 
     const found = baseSummaryFileList.find(item => {
-      if (item.app === summary.app) return true
-      logInfo(`BASE SUMMARY file list item: ${JSON.stringify(item)}`)
+      if (item.app === summary.app) {
+        logInfo(`BASE SUMMARY file list item: ${JSON.stringify(item)}`)
+        return true
+      }
     })
     if (found) {
       base = buildMergeItem(found)

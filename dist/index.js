@@ -704,9 +704,10 @@ const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList })
             throw new Error(`No coverage-final.json found for app: ${summary.app}. Make sure you ran both json-summary and text coverage reporters`);
         }
         const found = baseSummaryFileList.find(item => {
-            if (item.app === summary.app)
+            if (item.app === summary.app) {
+                (0, core_1.info)(`BASE SUMMARY file list item: ${JSON.stringify(item)}`);
                 return true;
-            (0, core_1.info)(`BASE SUMMARY file list item: ${JSON.stringify(item)}`);
+            }
         });
         if (found) {
             base = (0, exports.buildMergeItem)(found);

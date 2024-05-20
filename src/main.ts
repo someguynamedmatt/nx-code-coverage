@@ -3,7 +3,6 @@ import {buildParsedContext, upsertComment} from './github'
 import {info as logInfo, warning as logWarn, setOutput} from '@actions/core'
 import {JcsMergedType} from './types'
 import {MainInputs} from './interfaces'
-import {omit as _omit} from 'lodash'
 import {buildComment} from './comment'
 import {existsSync} from 'fs'
 import {processCoverageFiles} from './json-coverage'
@@ -38,13 +37,6 @@ export const main = async ({
         coverageBaseFolder
       })
 
-      logInfo(
-        `processCoverageFilesResults: ${JSON.stringify(
-          _omit(results, 'details'),
-          null,
-          2
-        )}`
-      )
       commentBody = buildComment({results, hideCoverageReports, hideUnchanged})
       hiddenHeader = hiddenHeaderForCoverage
     } else {
@@ -61,7 +53,6 @@ export const main = async ({
     const parsedContext = buildParsedContext()
 
     if (parsedContext.pullRequestNumber !== -1) {
-      logInfo(`PR Detected: Updating the PR Comment with Code Coverage`)
       await upsertComment({
         token,
         body: commentBody,

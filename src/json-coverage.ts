@@ -65,6 +65,7 @@ export const mergeFileLists = ({
     let diff: number | null = null
 
     const summary = buildMergeItem(jsonSum)
+    logInfo(`SUMMARY: ${summary}`)
     logInfo(`SUMMARY parsedTotal: ${JSON.stringify(summary.parsedTotal)}`)
     const summaryCoveragePct =
       summary.parsedTotal.statements.pct.toString() === 'Unknown'
@@ -79,6 +80,7 @@ export const mergeFileLists = ({
       )
     }
 
+    logInfo(`BASE SUMMARY file list: ${baseSummaryFileList}`)
     const found = baseSummaryFileList.find(item => item.app === summary.app)
     if (found) {
       base = buildMergeItem(found)

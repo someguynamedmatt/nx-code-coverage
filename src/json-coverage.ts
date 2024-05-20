@@ -66,7 +66,7 @@ export const mergeFileLists = ({
 
     const summary = buildMergeItem(jsonSum)
     logInfo(`SUMMARY app: ${JSON.stringify(summary.app)}`)
-    logInfo(`SUMMARY parsedTotal: ${JSON.stringify(summary.parsedTotal)}`)
+    // logInfo(`SUMMARY parsedTotal: ${JSON.stringify(summary.parsedTotal)}`)
     const summaryCoveragePct =
       summary.parsedTotal.statements.pct.toString() === 'Unknown'
         ? 0
@@ -83,7 +83,7 @@ export const mergeFileLists = ({
     const found = baseSummaryFileList.find(item => {
       if (item.app === summary.app) {
         if (item.app !== '') {
-          logInfo(`BASE SUMMARY file list item: ${JSON.stringify(item)}`)
+          // logInfo(`BASE SUMMARY file list item: ${JSON.stringify(item)}`)
         }
         return true
       }
@@ -91,7 +91,7 @@ export const mergeFileLists = ({
     if (found) {
       base = buildMergeItem(found)
       baseCoveragePct = base.parsedTotal.statements.pct
-      logInfo(`BASE parsedTotal: ${JSON.stringify(base.parsedTotal)}`)
+      // logInfo(`BASE parsedTotal: ${JSON.stringify(base.parsedTotal)}`)
       // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON
       // use Number.EPSILON so rounding of 0.0005 is correct
       diff =
@@ -217,16 +217,16 @@ export const listCoverageFiles = async ({
       dir = dir || initDir
       results = results || []
 
-      // logDebug(`readdirSync-workspacePath', workspacePath)
-      // logDebug(`readdirSync-dir', dir)
+      logInfo(`readdirSync-workspacePath ${workspacePath}`)
+      logInfo(`readdirSync-dir ${dir}`)
 
       const fileList = readdirSync(path.resolve(workspacePath, dir))
 
       for (const file of fileList) {
         const filePath = path.join(dir, file)
 
-        // logDebug(`statSync-workspacePath', workspacePath)
-        // logDebug(`statSync-filePath', filePath)
+        logInfo(`statSync-workspacePath ${workspacePath}`)
+        logInfo(`statSync-filePath ${filePath}`)
 
         if (statSync(path.resolve(workspacePath, filePath)).isDirectory()) {
           results = await listCoverageFiles({
@@ -242,9 +242,9 @@ export const listCoverageFiles = async ({
             const fullFilePath = path.join(workspacePath, filePath)
             const parsed = await parseFileFn(fullFilePath)
 
-            logDebug(`statSync-fullFilePath: ${fullFilePath}`)
-            logDebug(`statSync-filePath: ${filePath}`)
-            logDebug(`statSync-initDir: ${initDir}`)
+            logInfo(`statSync-fullFilePath: ${fullFilePath}`)
+            logInfo(`statSync-filePath: ${filePath}`)
+            logInfo(`statSync-initDir: ${initDir}`)
 
             results.push({
               app: filePath

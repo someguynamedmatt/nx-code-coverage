@@ -694,7 +694,7 @@ const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList })
         let diff = null;
         const summary = (0, exports.buildMergeItem)(jsonSum);
         (0, core_1.info)(`SUMMARY app: ${JSON.stringify(summary.app)}`);
-        (0, core_1.info)(`SUMMARY parsedTotal: ${JSON.stringify(summary.parsedTotal)}`);
+        // logInfo(`SUMMARY parsedTotal: ${JSON.stringify(summary.parsedTotal)}`)
         const summaryCoveragePct = summary.parsedTotal.statements.pct.toString() === 'Unknown'
             ? 0
             : summary.parsedTotal.statements.pct;
@@ -706,7 +706,7 @@ const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList })
         const found = baseSummaryFileList.find(item => {
             if (item.app === summary.app) {
                 if (item.app !== '') {
-                    (0, core_1.info)(`BASE SUMMARY file list item: ${JSON.stringify(item)}`);
+                    // logInfo(`BASE SUMMARY file list item: ${JSON.stringify(item)}`)
                 }
                 return true;
             }
@@ -714,7 +714,7 @@ const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList })
         if (found) {
             base = (0, exports.buildMergeItem)(found);
             baseCoveragePct = base.parsedTotal.statements.pct;
-            (0, core_1.info)(`BASE parsedTotal: ${JSON.stringify(base.parsedTotal)}`);
+            // logInfo(`BASE parsedTotal: ${JSON.stringify(base.parsedTotal)}`)
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON
             // use Number.EPSILON so rounding of 0.0005 is correct
             diff =
@@ -808,13 +808,13 @@ const listCoverageFiles = (_e) => __awaiter(void 0, [_e], void 0, function* ({ f
         try {
             dir = dir || initDir;
             results = results || [];
-            // logDebug(`readdirSync-workspacePath', workspacePath)
-            // logDebug(`readdirSync-dir', dir)
+            (0, core_1.info)(`readdirSync-workspacePath ${workspacePath}`);
+            (0, core_1.info)(`readdirSync-dir ${dir}`);
             const fileList = (0, fs_1.readdirSync)(path_1.default.resolve(workspacePath, dir));
             for (const file of fileList) {
                 const filePath = path_1.default.join(dir, file);
-                // logDebug(`statSync-workspacePath', workspacePath)
-                // logDebug(`statSync-filePath', filePath)
+                (0, core_1.info)(`statSync-workspacePath ${workspacePath}`);
+                (0, core_1.info)(`statSync-filePath ${filePath}`);
                 if ((0, fs_1.statSync)(path_1.default.resolve(workspacePath, filePath)).isDirectory()) {
                     results = yield (0, exports.listCoverageFiles)({
                         fileToFind,
@@ -829,9 +829,9 @@ const listCoverageFiles = (_e) => __awaiter(void 0, [_e], void 0, function* ({ f
                     if (filePath.endsWith(fileToFind)) {
                         const fullFilePath = path_1.default.join(workspacePath, filePath);
                         const parsed = yield parseFileFn(fullFilePath);
-                        (0, core_1.debug)(`statSync-fullFilePath: ${fullFilePath}`);
-                        (0, core_1.debug)(`statSync-filePath: ${filePath}`);
-                        (0, core_1.debug)(`statSync-initDir: ${initDir}`);
+                        (0, core_1.info)(`statSync-fullFilePath: ${fullFilePath}`);
+                        (0, core_1.info)(`statSync-filePath: ${filePath}`);
+                        (0, core_1.info)(`statSync-initDir: ${initDir}`);
                         results.push({
                             app: filePath
                                 .replace(initDir, '')

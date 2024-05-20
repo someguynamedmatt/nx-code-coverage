@@ -693,7 +693,7 @@ const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList })
         let baseCoveragePct = null;
         let diff = null;
         const summary = (0, exports.buildMergeItem)(jsonSum);
-        (0, core_1.info)(`SUMMARY: ${JSON.stringify(summary)}`);
+        (0, core_1.info)(`SUMMARY app: ${JSON.stringify(summary.app)}`);
         (0, core_1.info)(`SUMMARY parsedTotal: ${JSON.stringify(summary.parsedTotal)}`);
         const summaryCoveragePct = summary.parsedTotal.statements.pct.toString() === 'Unknown'
             ? 0

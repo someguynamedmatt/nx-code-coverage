@@ -65,7 +65,7 @@ export const mergeFileLists = ({
     let diff: number | null = null
 
     const summary = buildMergeItem(jsonSum)
-    logInfo(`SUMMARY: ${JSON.stringify(summary)}`)
+    logInfo(`SUMMARY app: ${JSON.stringify(summary.app)}`)
     logInfo(`SUMMARY parsedTotal: ${JSON.stringify(summary.parsedTotal)}`)
     const summaryCoveragePct =
       summary.parsedTotal.statements.pct.toString() === 'Unknown'

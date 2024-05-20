@@ -693,7 +693,7 @@ const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList })
         let baseCoveragePct = null;
         let diff = null;
         const summary = (0, exports.buildMergeItem)(jsonSum);
-        (0, core_1.info)(`SUMMARY: ${summary}`);
+        (0, core_1.info)(`SUMMARY: ${JSON.stringify(summary)}`);
         (0, core_1.info)(`SUMMARY parsedTotal: ${JSON.stringify(summary.parsedTotal)}`);
         const summaryCoveragePct = summary.parsedTotal.statements.pct.toString() === 'Unknown'
             ? 0
@@ -703,8 +703,11 @@ const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList })
         if (!final) {
             throw new Error(`No coverage-final.json found for app: ${summary.app}. Make sure you ran both json-summary and text coverage reporters`);
         }
-        (0, core_1.info)(`BASE SUMMARY file list: ${baseSummaryFileList}`);
-        const found = baseSummaryFileList.find(item => item.app === summary.app);
+        const found = baseSummaryFileList.find(item => {
+            if (item.app === summary.app)
+                return true;
+            (0, core_1.info)(`BASE SUMMARY file list item: ${JSON.stringify(item)}`);
+        });
         if (found) {
             base = (0, exports.buildMergeItem)(found);
             baseCoveragePct = base.parsedTotal.statements.pct;

@@ -8,6 +8,7 @@ import {
 } from './types'
 
 export interface MainInputs {
+  allowance?: number
   coverageRan: boolean
   coverageFolder: string
   coverageBaseFolder: string

@@ -5,6 +5,9 @@ branding:
   icon: box
   color: blue
 inputs:
+  allowance:
+    required: false
+    description: Diff decrease allowance, anything below this number is considered a failure
   github-token:
     required: true
     description: Github token

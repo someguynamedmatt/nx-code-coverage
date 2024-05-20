@@ -333,6 +333,7 @@ function run() {
             const hideUnchanged = (0, core_1.getBooleanInput)('hide-unchanged');
             const noCoverageRan = (0, core_1.getBooleanInput)('no-coverage-ran');
             const token = (0, core_1.getInput)('github-token');
+            const allowance = (0, core_1.getInput)('allowance') || '0';
             const coverageFolder = (0, core_1.getInput)('coverage-folder') || 'coverage';
             const coverageBaseFolder = (0, core_1.getInput)('coverage-base-folder') || 'coverage-base';
             const githubWorkspace = process.env.GITHUB_WORKSPACE;
@@ -348,6 +349,7 @@ function run() {
                 }
             }
             const mainInputs = {
+                allowance: parseInt(allowance),
                 coverageRan: !noCoverageRan,
                 coverageFolder,
                 coverageBaseFolder,
@@ -918,7 +920,7 @@ const core_1 = __nccwpck_require__(2186);
 const comment_1 = __nccwpck_require__(1667);
 const fs_1 = __nccwpck_require__(7147);
 const json_coverage_1 = __nccwpck_require__(4223);
-const main = (_a) => __awaiter(void 0, [_a], void 0, function* ({ coverageRan, coverageFolder, coverageBaseFolder, token, githubWorkspace, gistProcessing, gistToken, gistId, hideCoverageReports, hideUnchanged }) {
+const main = (_a) => __awaiter(void 0, [_a], void 0, function* ({ allowance = 0, coverageRan, coverageFolder, coverageBaseFolder, token, githubWorkspace, gistProcessing, gistToken, gistId, hideCoverageReports, hideUnchanged }) {
     try {
         // hiddenHeader to help identify any previous PR comments
         const hiddenHeaderForCoverage = '<!-- nx-code-coverage -->';
@@ -969,8 +971,10 @@ const main = (_a) => __awaiter(void 0, [_a], void 0, function* ({ coverageRan, c
             }
         }
         for (const result of results) {
-            if ((result === null || result === void 0 ? void 0 : result.diff) !== null && result.diff < 0) {
-                (0, core_1.info)('Diff is negative, setting output as true');
+            if (result.app === '' &&
+                (result === null || result === void 0 ? void 0 : result.diff) !== null &&
+                Math.abs(result.diff) < allowance) {
+                (0, core_1.info)('Overall diff is less than the allowable diff, setting output as true');
                 (0, core_1.setOutput)('decreased-coverage', true);
             }
         }

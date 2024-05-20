@@ -8,6 +8,7 @@ import {existsSync} from 'fs'
 import {processCoverageFiles} from './json-coverage'
 
 export const main = async ({
+  allowance = 0,
   coverageRan,
   coverageFolder,
   coverageBaseFolder,
@@ -79,8 +80,14 @@ export const main = async ({
     }
 
     for (const result of results) {
-      if (result?.diff !== null && result.diff < 0) {
-        logInfo('Diff is negative, setting output as true')
+      if (
+        result.app === '' &&
+        result?.diff !== null &&
+        Math.abs(result.diff) < allowance
+      ) {
+        logInfo(
+          'Overall diff is less than the allowable diff, setting output as true'
+        )
         setOutput('decreased-coverage', true)
       }
     }

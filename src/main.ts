@@ -83,6 +83,7 @@ export const main = async ({
       if (
         result.app === '' &&
         result?.diff !== null &&
+        result.diff < 0 &&
         Math.abs(result.diff) > allowance
       ) {
         logInfo(

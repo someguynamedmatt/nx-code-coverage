@@ -705,7 +705,9 @@ const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList })
         }
         const found = baseSummaryFileList.find(item => {
             if (item.app === summary.app) {
-                (0, core_1.info)(`BASE SUMMARY file list item: ${JSON.stringify(item)}`);
+                if (item.app !== '') {
+                    (0, core_1.info)(`BASE SUMMARY file list item: ${JSON.stringify(item)}`);
+                }
                 return true;
             }
         });

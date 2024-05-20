@@ -83,7 +83,7 @@ export const main = async ({
       if (
         result.app === '' &&
         result?.diff !== null &&
-        Math.abs(result.diff) < allowance
+        Math.abs(result.diff) > allowance
       ) {
         logInfo(
           'Overall diff is less than the allowable diff, setting output as true'

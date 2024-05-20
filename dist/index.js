@@ -973,7 +973,7 @@ const main = (_a) => __awaiter(void 0, [_a], void 0, function* ({ allowance = 0,
         for (const result of results) {
             if (result.app === '' &&
                 (result === null || result === void 0 ? void 0 : result.diff) !== null &&
-                Math.abs(result.diff) < allowance) {
+                Math.abs(result.diff) > allowance) {
                 (0, core_1.info)('Overall diff is less than the allowable diff, setting output as true');
                 (0, core_1.setOutput)('decreased-coverage', true);
             }

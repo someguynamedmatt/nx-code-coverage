@@ -94,6 +94,8 @@ export const mergeFileLists = ({
       // logInfo(`BASE parsedTotal: ${JSON.stringify(base.parsedTotal)}`)
       // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON
       // use Number.EPSILON so rounding of 0.0005 is correct
+      logInfo(`summaryCoveragePct: ${summaryCoveragePct}`)
+      logInfo(`baseCoveragePct: ${baseCoveragePct}`)
       diff =
         Math.round(
           (summaryCoveragePct - baseCoveragePct + Number.EPSILON) * 100

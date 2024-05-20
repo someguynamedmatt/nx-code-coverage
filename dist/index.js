@@ -717,6 +717,8 @@ const mergeFileLists = ({ summaryFileList, baseSummaryFileList, finalFileList })
             // logInfo(`BASE parsedTotal: ${JSON.stringify(base.parsedTotal)}`)
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON
             // use Number.EPSILON so rounding of 0.0005 is correct
+            (0, core_1.info)(`summaryCoveragePct: ${summaryCoveragePct}`);
+            (0, core_1.info)(`baseCoveragePct: ${baseCoveragePct}`);
             diff =
                 Math.round((summaryCoveragePct - baseCoveragePct + Number.EPSILON) * 100) / 100;
             (0, core_1.info)(`DIFF ${diff}`);

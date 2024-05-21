@@ -333,7 +333,7 @@ function run() {
             const hideUnchanged = (0, core_1.getBooleanInput)('hide-unchanged');
             const noCoverageRan = (0, core_1.getBooleanInput)('no-coverage-ran');
             const token = (0, core_1.getInput)('github-token');
-            const allowance = (0, core_1.getInput)('allowance') || '0';
+            const allowance = (0, core_1.getInput)('allowance') || '0.00';
             const coverageFolder = (0, core_1.getInput)('coverage-folder') || 'coverage';
             const coverageBaseFolder = (0, core_1.getInput)('coverage-base-folder') || 'coverage-base';
             const githubWorkspace = process.env.GITHUB_WORKSPACE;
@@ -349,7 +349,7 @@ function run() {
                 }
             }
             const mainInputs = {
-                allowance: parseInt(allowance),
+                allowance: parseFloat(allowance),
                 coverageRan: !noCoverageRan,
                 coverageFolder,
                 coverageBaseFolder,

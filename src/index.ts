@@ -13,7 +13,7 @@ async function run(): Promise<void> {
     const hideUnchanged = getBooleanInput('hide-unchanged')
     const noCoverageRan = getBooleanInput('no-coverage-ran')
     const token = getInput('github-token')
-    const allowance = getInput('allowance') || '0'
+    const allowance = getInput('allowance') || '0.00'
     const coverageFolder = getInput('coverage-folder') || 'coverage'
     const coverageBaseFolder =
       getInput('coverage-base-folder') || 'coverage-base'
@@ -36,7 +36,7 @@ async function run(): Promise<void> {
       }
     }
     const mainInputs: MainInputs = {
-      allowance: parseInt(allowance),
+      allowance: parseFloat(allowance),
       coverageRan: !noCoverageRan,
       coverageFolder,
       coverageBaseFolder,
